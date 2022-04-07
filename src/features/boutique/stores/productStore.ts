@@ -72,6 +72,7 @@ export function initialFetchProducts() {
         productStore.fetchProducts();
         productStore.loaded = true;
         if (productStore.needRefresh) {
+            productStore.page = 1;
             productStore.products = [];
             productStore.needRefresh = false;
         }

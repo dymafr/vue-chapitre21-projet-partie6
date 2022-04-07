@@ -26,7 +26,7 @@ function removeProductFromCart(productId: string) {
 }
 
 productStore.$onAction(({ name, after, args }) => {
-    if (name === 'updateFilter' && !args[0].search) {
+    if (name === 'updateFilter' && args[0].search === undefined) {
         after(() => {
             productStore.page = 1;
             productStore.products = [];
