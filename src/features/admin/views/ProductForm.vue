@@ -7,6 +7,7 @@ import { getProduct } from "@/shared/services/product.service";
 import type { ProductInterface } from "@/shared/interfaces/Product.interface";
 import { useRoute, useRouter } from "vue-router";
 import { useAdminProducts } from "../stores/adminProductStore";
+import type { Category } from "@/shared/interfaces";
 
 const firstInput = ref<HTMLInputElement | null>(null);
 const product = ref<ProductInterface | null>(null);
@@ -55,11 +56,11 @@ const { handleSubmit, isSubmitting } = useForm({
   initialValues,
 });
 
-const title = useField("title");
-const image = useField("image");
-const price = useField("price");
-const description = useField("description");
-const category = useField("category");
+const title = useField<string>("title");
+const image = useField<string>("image");
+const price = useField<number>("price");
+const description = useField<string>("description");
+const category = useField<Category>("category");
 
 const trySubmit = handleSubmit(async (formValues) => {
   try {
@@ -104,7 +105,7 @@ const trySubmit = handleSubmit(async (formValues) => {
       </div>
       <div class="d-flex flex-column mb-20">
         <label class="mb-5">*Description</label>
-        <textarea v-model="(description.value.value as string)"></textarea>
+        <textarea v-model="description.value.value"></textarea>
         <small class="form-error" v-if="description.errorMessage.value">{{
           description.errorMessage.value
         }}</small>
