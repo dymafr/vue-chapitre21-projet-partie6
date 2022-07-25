@@ -1,12 +1,12 @@
-import { seed, seed40articles } from '@/shared/data/seed';
+import { seed, seed40articles } from "@/shared/data/seed";
 import type {
   FiltersInterface,
   FilterUpdate,
   ProductInterface,
-} from '@/shared/interfaces';
-import { fetchProductsWithFilter } from '@/shared/services/product.service';
-import { defineStore } from 'pinia';
-import { DEFAULT_FILTERS } from '../data/filters';
+} from "@/shared/interfaces";
+import { fetchProductsWithFilter } from "@/shared/services/product.service";
+import { defineStore } from "pinia";
+import { DEFAULT_FILTERS } from "../data/filters";
 
 interface ProductState {
   products: ProductInterface[];
@@ -18,7 +18,7 @@ interface ProductState {
   needRefresh: boolean;
 }
 
-export const useProducts = defineStore('products', {
+export const useProducts = defineStore("products", {
   state: (): ProductState => ({
     products: [],
     filters: { ...DEFAULT_FILTERS },
@@ -66,8 +66,8 @@ export const useProducts = defineStore('products', {
       this.page++;
     },
     seed() {
-      seed('vueprojectproducts');
-      seed40articles('vueprojectproducts');
+      seed("vueprojectproducts");
+      seed40articles("vueprojectproducts");
     },
   },
 });
