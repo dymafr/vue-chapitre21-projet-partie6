@@ -35,6 +35,7 @@ const emit = defineEmits<{
       <div
         class="mb-5"
         v-for="priceRange of ([[0, 10000], [800, 1000], [1000, 1500], [1500, 2000], [2000, 10000]] as [number, number][])"
+        :key="priceRange[0] + ''"
       >
         <input
           :checked="filters.priceRange[0] === priceRange[0]"
@@ -60,6 +61,7 @@ const emit = defineEmits<{
         class="category"
         :class="{ selected: filters.category === category }"
         v-for="category in (['all', 'desktop', 'gamer', 'streaming'] as Category[])"
+        :key="category"
         @click="emit('updateFilter', { category })"
       >
         {{ category }}
