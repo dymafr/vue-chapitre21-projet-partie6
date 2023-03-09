@@ -20,8 +20,8 @@ import TheFooter from "./components/Footer.vue";
 </template>
 
 <style lang="scss">
-@import "./assets/scss/base.scss";
-@import "./assets/scss/debug.scss";
+@use "./assets/scss/base.scss" as *;
+@use "./assets/scss/debug.scss" as *;
 
 .app-container {
   height: 100vh;
