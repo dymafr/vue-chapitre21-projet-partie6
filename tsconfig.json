@@ -12,7 +12,8 @@
         "./src/*"
       ]
     },
-    "strict": true
+    "strict": true,
+    "noImplicitAny": false,
   },
   "references": [
     {

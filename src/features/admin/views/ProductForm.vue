@@ -4,7 +4,10 @@ import { z } from "zod";
 import { toFormValidator } from "@vee-validate/zod";
 import { onMounted, ref } from "vue";
 import { getProduct } from "@/shared/services/product.service";
-import type { ProductInterface } from "@/shared/interfaces/Product.interface";
+import type {
+  ProductFormInterface,
+  ProductInterface,
+} from "@/shared/interfaces/Product.interface";
 import { useRoute, useRouter } from "vue-router";
 import { useAdminProducts } from "../stores/adminProductStore";
 import type { Category } from "@/shared/interfaces";
@@ -51,7 +54,7 @@ const validationSchema = toFormValidator(
   })
 );
 
-const { handleSubmit, isSubmitting } = useForm({
+const { handleSubmit, isSubmitting } = useForm<ProductFormInterface>({
   validationSchema,
   initialValues,
 });
