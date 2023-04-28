@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useForm, useField } from "vee-validate";
 import { z } from "zod";
-import { toFormValidator } from "@vee-validate/zod";
+import { toTypedSchema } from "@vee-validate/zod";
 import { onMounted, ref } from "vue";
 import { getProduct } from "@/shared/services/product.service";
 import type {
@@ -36,7 +36,7 @@ onMounted(() => {
 
 const required = { required_error: "Veuillez renseigner ce champ" };
 
-const validationSchema = toFormValidator(
+const validationSchema = toTypedSchema(
   z.object({
     title: z
       .string(required)
