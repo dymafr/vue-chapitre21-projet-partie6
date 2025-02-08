@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import TheHeader from "./components/Header.vue";
-import TheFooter from "./components/Footer.vue";
+import AppHeader from './components/AppHeader.vue'
+import AppFooter from './components/AppFooter.vue'
 </script>
 
 <template>
   <div class="app-container">
-    <TheHeader class="header" />
+    <AppHeader class="header" />
     <div class="app-content">
       <router-view v-slot="{ Component }">
         <template v-if="Component">
@@ -15,18 +15,18 @@ import TheFooter from "./components/Footer.vue";
         </template>
       </router-view>
     </div>
-    <TheFooter class="footer hide-xs" />
+    <AppFooter class="footer hide-xs" />
   </div>
 </template>
 
 <style lang="scss">
-@use "./assets/scss/base.scss" as *;
-@use "./assets/scss/debug.scss" as *;
+@use './assets/scss/base.scss' as *;
+@use './assets/scss/debug.scss' as *;
 
 .app-container {
   height: 100vh;
   display: grid;
-  grid-template-areas: "header" "app-content" "footer";
+  grid-template-areas: 'header' 'app-content' 'footer';
   grid-template-rows: 48px auto 48px;
 }
 

@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import Calc from "./Calc.vue";
+import { ref } from 'vue'
+import AppCalc from './AppCalc.vue'
 
-const state = reactive<{
-  open: boolean;
-}>({
-  open: false,
-});
+const open = ref<boolean>(false)
 </script>
 
 <template>
@@ -33,17 +29,10 @@ const state = reactive<{
         </li>
       </ul>
       <div class="menu-xs-container">
-        <Calc
-          :open="state.open"
-          @close="state.open = false"
-          :transparent="true"
-        />
-        <i
-          @click="state.open = !state.open"
-          class="fa-solid fa-bars show-xs"
-        ></i>
+        <AppCalc :open="open" @close="open = false" :transparent="true" />
+        <i @click="open = !open" class="fa-solid fa-bars show-xs"></i>
         <Transition>
-          <ul @click="state.open = false" v-if="state.open" class="menu card">
+          <ul @click="open = false" v-if="open" class="menu card">
             <li>
               <router-link to="/boutique">Boutique</router-link>
             </li>
@@ -64,7 +53,7 @@ const state = reactive<{
 </template>
 
 <style lang="scss" scoped>
-@use "@/assets/scss/mixins";
+@use '@/assets/scss/mixins';
 
 header {
   background-color: var(--primary-1);
@@ -80,13 +69,13 @@ header {
     }
   }
   i {
-    @include mixins.sm {
-      display: none;
-    }
     justify-self: end;
     color: white;
     font-size: 20px;
     cursor: pointer;
+    @include mixins.sm {
+      display: none;
+    }
   }
 
   .actions-container {
